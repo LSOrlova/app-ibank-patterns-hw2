@@ -10,7 +10,7 @@ import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
 import static ru.netology.DataGenerator.AddUser.*;
 
-class appIBankTest {
+class AppIBankTest {
 
     @BeforeEach
     void setup() {
@@ -18,16 +18,16 @@ class appIBankTest {
     }
 
     @Test
-    void AllInputActive() {
+    void shouldLoginValidNameValidPasswordStatusActive() {
         Registration testUser = addUserValid();
         $("[data-test-id=login] input").setValue(testUser.getLogin());
         $("[data-test-id=password] input").setValue(testUser.getPassword());
         $(".button__content").click();
-        $(".App_appContainer__3jRx1 h2").shouldBe(visible).shouldHave(text("Личный кабинет"));
+        $("h2").shouldHave(text("Личный кабинет"));
     }
 
     @Test
-    void AllInputBlocked() {
+    void shouldNotLoginValidNameValidPasswordStatusBlocked() {
         Registration testUser = addUserBlocked();
         $("[data-test-id=login] input").setValue(testUser.getLogin());
         $("[data-test-id=password] input").setValue(testUser.getPassword());
@@ -36,7 +36,7 @@ class appIBankTest {
     }
 
     @Test
-    void LoginInvalid() {
+    void shouldNotLoginLoginInvalid() {
         Registration testUser = addUserLoginInvalid();
         $("[data-test-id=login] input").setValue(testUser.getLogin());
         $("[data-test-id=password] input").setValue(testUser.getPassword());
@@ -45,7 +45,7 @@ class appIBankTest {
     }
 
     @Test
-    void PasswordInvalid() {
+    void shouldNotLoginPasswordInvalid() {
         Registration testUser = addUserPasswordInvalid();
         $("[data-test-id=login] input").setValue(testUser.getLogin());
         $("[data-test-id=password] input").setValue(testUser.getPassword());
@@ -54,7 +54,7 @@ class appIBankTest {
     }
 
     @Test
-    void negativeUserNotRegistered() {
+    void shouldNotLoginUserNotRegistered() {
         Registration testUser = addUserNotRegistered();
         $("[data-test-id=login] input").setValue(testUser.getLogin());
         $("[data-test-id=password] input").setValue(testUser.getPassword());
