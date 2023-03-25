@@ -9,10 +9,7 @@ import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
 import static ru.netology.DataGenerator.AddUser.*;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-
-public class AppIBankTest {
+public class ApplicationIBankTest {
 
     @BeforeEach
     void setup() {
